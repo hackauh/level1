@@ -1,0 +1,33 @@
+            - name: Deploy PR Preview
+  # You may pin to the exact commit or the version.
+  # uses: rossjrw/pr-preview-action@2fb559e4766555e23d07b73d313fe97c4f8c3cfe
+  uses: rossjrw/pr-preview-action@v1.6.1
+  with:
+    # The token to use for the deployment. Default is GITHUB_TOKEN in the current repository. If you need more permissions for things such as deploying to another repository, you can add a Personal Access Token (PAT).
+
+    token: # optional, default is ${{ github.token }}
+    # Branch on which the previews will be deployed.
+    preview-branch: # optional, default is gh-pages
+    # Path to the directory containing all previews.
+    umbrella-dir: # optional, default is pr-preview
+    # URL of the repo's GitHub Pages site.
+    pages-base-url: # optional, default is 
+    # Path that GitHub Pages is served from.
+    pages-base-path: # optional, default is 
+    # Directory containing files to deploy.
+    source-dir: # optional, default is .
+    # The GitHub repository to deploy the preview to. This should be formatted like `<org name>/<repo name>`, e.g. `rossjrw/pr-preview-action`. Defaults to the current repository.
+You will need to add a Personal Access Token (PAT) in the `token` input in order to allow the action running in one repository to make changes to another repository.
+
+    deploy-repository: # optional, default is ${{ github.repository }}
+    # Whether to leave a sticky comment on the calling PR.
+    comment: # optional, default is true
+    # Deprecated, use `pages-base-url` instead.
+    custom-url: # optional, default is 
+    # Determines what this action will do when it is executed. Supported values: `deploy`, `remove`, `auto` (default).
+If set to `deploy`, will attempt to deploy the preview and overwrite any existing preview in that location.
+If set to `remove`, will attempt to remove the preview in that location.
+If set to `auto`, the action will try to determine whether to deploy or remove the preview. It will deploy the preview on `pull_request.types.synchronize` and `.opened` events, and remove it on `pull_request.types.closed` events. It will not do anything for all other events. `auto` is the default value.
+
+    action: # optional, default is auto
+          
